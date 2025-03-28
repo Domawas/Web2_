@@ -1,82 +1,112 @@
-/* Alap beállítások */
-body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #141414;  /* Sötét háttér */
+/* Alap stílusok */
+* {
     margin: 0;
     padding: 0;
-    color: white;  /* Fehér szöveg */
+    box-sizing: border-box;
+    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Fejléc (ha szükséges) */
-h1 {
+body {
+    background-image: url(forras/hatter.jfif);
+    color: #f0f0f0;
+    padding: 20px;
+    font-size: 16px;
+    margin: auto;
+
+    
+    
+}
+
+/* Fejléc stílusok */
+h3 {
     text-align: center;
-    color: #fff;
-    padding: 20px 0;
-    font-size: 2rem;
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-/* A csapatok konténerének stílusa */
+/* Csapatok konténer */
 .csapat-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;  /* Balra igazítás */
-    gap: 20px;
-    padding: 30px;
-    overflow-x: scroll;  /* A csapatok vízszintesen görgethetők */
-    scrollbar-width: thin;
-    scrollbar-color: #888 #333;  /* Görgetősáv stílusok */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+    margin-left: 230px;
+    justify-items: center;
+    
 }
 
-/* Minden egyes csapat (elem) stílusa */
+/* Egyes csapatok */
 .csapat {
-    position: relative;
-    width: 250px;  /* Egy képméret */
-    height: 350px;  /* Egy fix magasság */
-    background-color: #333;  /* Sötét háttér minden csapatnak */
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    background: linear-gradient(145deg, #4c4c4c, #2a2a2a);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effekt: képek megnagyobbítása */
 .csapat:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* A csapat képe */
 .csapat img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;  /* Kép kitöltése a konténerrel */
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
-/* Csapat név (alsó rész) */
+/* Különleges stílusok a linkekhez */
+a {
+    color: #1e90ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff6347;
+}
+
+/* Animációk */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .csapat h3 {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);  /* Árnyékos szöveg */
-    margin: 0;
+    animation: pulse 1.5s ease-in-out infinite;
 }
 
-/* A görgetősáv stílusa (Chrome/Firefox) */
-.csapat-container::-webkit-scrollbar {
-    height: 8px;
-}
+/* Mobilbarát kialakítás */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
 
-.csapat-container::-webkit-scrollbar-track {
-    background: #333;
-}
+    .csapat-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 
-.csapat-container::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-}
+    h3 {
+        font-size: 20px;
+    }
 
-.csapat-container::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    .csapat img {
+        max-width: 180px;
+    }
 }

@@ -13,26 +13,26 @@
 
         $db = new DB();
 
-        // Kommentált kódrészletek
+     
         #$db->csapatBeszur('Farkas', 1, 'farkas.png');
         $db->csapatNevModosit('Királyok', 'Császárok');
         $db->csapatTagokTorlese('Kutya');
         $db->csapatTorlese('Kutya');
 
-        // Csapatok lekérdezése
+       
         $csapatok = $db->csapatokKeppekkel();
 
-        // A csapatok megjelenítése
+    
         echo '<div class="csapat-container">';
         foreach ($csapatok as $csapat) {
-            // Minden csapatot egy div-be zárunk
+        
             echo "<div class='csapat'>";
             echo "<h3>" . $csapat['nev'] . "</h3>";
             echo "<img src='forras/" . $csapat['kep'] . "' alt='" . $csapat['nev'] . "'><br><br>";
             echo "</div>";
         }
+
         echo '</div>';
     ?>
-
 </body>
 </html>
